@@ -42,8 +42,8 @@ func TPMPresent() bool {
 	return state
 }
 
-//TPMReadPCR0 reads if PCR0-Registers have been written
-func TPMReadPCR0() bool {
+//PCR0notZero reads if PCR0-Registers have been written
+func PCR0notZero() bool {
 	state := false
 	tpm2.Startup(tpmcon, tpm2.StartupClear)
 	if tpmcon != nil {
@@ -69,6 +69,6 @@ func TPMReadPCR0() bool {
 func RunTests() {
 	ConnectTpm("/dev/tpm2")
 	fmt.Printf("%+v", TPMPresent())
-	fmt.Printf("%+v", TPMReadPCR0())
+	fmt.Printf("%+v", PCR0notZero())
 	CloseTpm()
 }
