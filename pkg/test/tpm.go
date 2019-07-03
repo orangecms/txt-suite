@@ -31,7 +31,7 @@ func CloseTpm() bool {
 func TPMPresent() bool {
 	state := false
 	if tpmcon != nil {
-		recInterf, _, _ := tpm2.GetCapability(tpmcon, tpm2.CapabilityTPMProperties, 1, uint32(tpm2.PTManufacturer))
+		recInterf, _, _ := tpm2.GetCapability(tpmcon, tpm2.CapabilityTPMProperties, 1, uint32(tpm2.Manufacturer))
 		if recInterf != nil {
 			if recInterf[0].(tpm2.TaggedProperty).Value != 0 {
 				state = true
